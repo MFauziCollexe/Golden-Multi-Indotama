@@ -2,41 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Page;     // 👈 Tambahkan ini
+use App\Models\Page;
 use App\Models\Section;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Log;
+use Mews\Purifier\Facades\Purifier; // ✅ untuk sanitasi HTML
 
 class HomeController extends Controller
 {
     public function index()
     {
         try {
-            // 1. Cari tahu ID dari halaman 'home'
-            // Gagal jika halaman 'home' tidak ada di tabel pages
+            // 1. Ambil halaman dengan slug 'home'
             $homePage = Page::where('slug', 'home')->firstOrFail();
 
-            // 2. Ambil SEMUA section yang aktif untuk halaman tersebut
-            // dan urutkan berdasarkan kolom order (jika ada)
+            // 2. Ambil semua section aktif dari halaman tsb
             $sections = Section::where('page_id', $homePage->id)
                 ->where('status', 'active')
-                ->orderBy('order', 'asc') // Opsional, tapi sangat direkomendasikan
+                ->orderBy('order', 'asc')
                 ->get();
+
+            // 3. Bersihkan HTML di setiap description agar aman
+            $sections->transform(function ($section) {
+                $section->description = Purifier::clean($section->description);
+                return $section;
+            });
 
             $dbError = null;
         } 
         catch (QueryException $e) {
             Log::error('Database error in HomeController: ' . $e->getMessage());
-            $sections = collect(); // Kirim koleksi kosong jika error
+            $sections = collect();
             $dbError = 'Koneksi ke database gagal.';
         } 
         catch (\Exception $e) {
             Log::error('Error umum di HomeController: ' . $e->getMessage());
-            $sections = collect(); // Kirim koleksi kosong jika error
+            $sections = collect();
             $dbError = 'Terjadi kesalahan tak terduga.';
         }
 
-        // 3. Kirim variabel $sections (bukan $about) ke view
+        // 4. Kirim variabel ke view
         return view('pages.home', compact('sections', 'dbError'));
     }
 }

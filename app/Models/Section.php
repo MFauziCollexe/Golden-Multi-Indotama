@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Log;
+use Mews\Purifier\Facades\Purifier;
 
 class Section extends Model
 {
@@ -53,5 +54,11 @@ class Section extends Model
             Log::error("Gagal memuat sections untuk page_id {$pageId}: " . $e->getMessage());
             return collect(); // kembalikan koleksi kosong biar tidak error di view
         }
+    }
+
+    // 🧹 Otomatis bersihkan HTML sebelum disimpan
+    public function setDescriptionAttribute($value)
+    {
+        $this->attributes['description'] = Purifier::clean($value, 'default');
     }
 }
