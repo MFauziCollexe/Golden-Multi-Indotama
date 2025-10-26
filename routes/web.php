@@ -15,6 +15,7 @@ Route::get('/careers', [CareerController::class, 'index'])->name('careers');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });

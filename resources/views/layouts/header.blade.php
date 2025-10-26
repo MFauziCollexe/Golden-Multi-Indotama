@@ -48,7 +48,6 @@
         </div>
     </div>
 </header>
-<div class="h-20"></div>
 <script>
 document.addEventListener('scroll', function () {
     const header = document.querySelector('header');

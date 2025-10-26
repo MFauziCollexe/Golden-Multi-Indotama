@@ -1,17 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="relative bg-gray-50 py-20 text-center">
-    <div class="container mx-auto px-4">
-        <h1 class="text-5xl font-extrabold text-blue-900 mb-4">
-            Solusi Rantai Dingin Berbasis Teknologi Digital
-        </h1>
-        <p class="text-gray-700 mb-8 text-lg max-w-2xl mx-auto">
-            Kami menyediakan layanan cold storage modern untuk meningkatkan efisiensi logistik Anda.
-        </p>
-        <a href="#layanan" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition">
-            Baca Lebih Lanjut
-        </a>
-    </div>
-</section>
+    {{-- =========================
+         HOME PAGE SECTIONS
+    ========================== --}}
+
+    {{-- HERO SECTION (static atau wajib muncul) --}}
+    @includeIf('sections.home._hero')
+
+    {{-- SECTIONS DARI DATABASE --}}
+    @if(isset($sections) && $sections->count() > 0)
+        @foreach ($sections as $section)
+            {{-- Lewati jika section_name = "hero" agar tidak double --}}
+            @if($section->section_name !== 'hero')
+                @includeIf('sections.home._' . $section->section_name, ['section' => $section])
+            @endif
+        @endforeach
+    @else
+        {{-- Fallback jika belum ada data section --}}
+        <div class="text-center py-20 text-gray-500">
+            <p>Belum ada konten untuk halaman ini.</p>
+        </div>
+    @endif
 @endsection
+
+<!-- {{-- Pattern dekoratif bawah (repeat otomatis) --}}
+    <div class="absolute bottom-0 left-0 w-full h-16 md:h-20" 
+         style="
+            background-image: url('{{ asset('images/png/backgrounds/bg-gmi-footer.png') }}');
+            background-repeat: repeat-x;
+            background-size: 500px auto;
+            background-position: bottom center;
+         ">
+    </div> -->
