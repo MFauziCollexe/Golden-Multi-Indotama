@@ -1,5 +1,5 @@
 <section id="why" class="relative bg-white py-16 md:py-24 overflow-hidden">
-    <div class="container mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
+    <div class="container mx-auto lg:px-20 px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
         
         {{-- =========================
              KIRI: TEKS + FITUR

@@ -25,8 +25,9 @@
 @endphp
 
 @if($partnerSection)
-<section id="partner" class="py-16 bg-white">
-    <div class="container mx-auto flex flex-col lg:flex-row items-center gap-10 px-6">
+<section id="partner" class="relative bg-gray-100 py-16 md:py-24 overflow-hidden">
+   
+    <div class="container mx-auto flex flex-col lg:flex-row md:px-12 lg:px-20 items-center gap-10 px-6">
 
         {{-- === SLIDESHOW === --}}
         <div class="relative w-full lg:w-1/2"
@@ -97,7 +98,7 @@
                     @foreach ($features as $item)
                         @if(isset($item['icon']) && isset($item['text']))
                             <div class="flex items-start gap-3">
-                                <img src="{{ asset($item['icon']) }}" alt="icon" class="w-6 h-6 mt-1">
+                                <img src="{{ asset($item['icon']) }}" alt="icon" class="w-14 h-14 mt-1">
                                 <p>{!! $item['text'] !!}</p>
                             </div>
                         @endif

@@ -32,6 +32,6 @@
         </a>
     </div>
 
-    <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-white"></div>
+    <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-gray-100"></div>
     
 </section>

@@ -3,7 +3,7 @@
 ========================== --}}
 <section 
     id="about-us"
-    class="relative py-20 bg-gray-50 overflow-hidden"
+    class="relative bg-gray-100 py-16 md:py-24 overflow-hidden"
 >
     <div class="container mx-auto px-6 md:px-12 lg:px-20">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
