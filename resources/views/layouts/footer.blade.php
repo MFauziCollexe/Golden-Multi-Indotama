@@ -3,7 +3,8 @@
 
         {{-- Kolom Logo & Deskripsi --}}
         <div class="md:col-span-1">
-            <img src="{{ asset('images/png/logo/logo-gmi-text-putih.png') }}" alt="Logo GMI" class="w-30 mb-4">
+            <img src="{{ asset('images/png/logo/logo-gmi-text-putih.png') }}" alt="Logo GMI" 
+                class="w-32 md:w-40 lg:w-48">
             <p class="text-sm text-gray-300 leading-relaxed">
                 Menyediakan solusi penyimpanan dingin terintegrasi untuk menjamin kualitas, keamanan,
                 dan konsistensi produk dari penyimpanan hingga distribusi.

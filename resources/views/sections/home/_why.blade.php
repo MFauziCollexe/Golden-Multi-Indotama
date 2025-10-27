@@ -6,23 +6,24 @@
         ========================== --}}
         <div>
             {{-- Judul --}}
-            <h2 class="text-3xl md:text-4xl font-semibold text-gray-800 mb-8">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4">
                 {{ $section->title ?? 'Kenapa GMI?' }}
             </h2>
 
             {{-- Ambil isi JSON dan looping --}}
            @php
-                $raw = $section->description;
+                $raw = $section->json_text;
                 $clean = strip_tags(trim($raw)); // hapus <p>, <br>, dsb
                 $decodedHtml = html_entity_decode($clean); // ubah &quot; jadi "
                 $items = json_decode($decodedHtml, true);
             @endphp
-            
+            <!-- dd($clean, $decodedHtml, $items); -->
+
             @if (!empty($items) && is_array($items))
                 <div class="space-y-8">
                     @foreach ($items as $item)
                         <div class="flex items-start">
-                            <div class="flex-shrink-0 w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mr-5">
+                            <div class="flex-shrink-0 w-14 h-14 bg-white shadow-md rounded-full flex items-center justify-center mr-5">
                                 <img src="{{ asset('images/svg/' . $item['icon']) }}" 
                                      alt="{{ $item['title'] }}" 
                                      class="w-8 h-8">

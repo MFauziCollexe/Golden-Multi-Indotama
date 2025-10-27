@@ -37,7 +37,7 @@
                 @endif
 
                 @if(!empty($section->title))
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4">
                         {{ $section->title }}
                     </h2>
                 @endif
