@@ -3,7 +3,7 @@
 @endphp
 
 <section id="stats"
-  class="bg-gray-100 py-16 text-blue-900 px-6 md:px-20"
+  class="bg-gray-100 py-10 text-blue-900 px-4 md:px-20"
   x-data
   x-init="
     const section = $el;
@@ -49,7 +49,7 @@
     observer.observe(section);
   ">
 
-  <div class="max-w-6xl mx-auto flex flex-wrap justify-center gap-12 md:gap-20">
+  <div class="max-w-screen-xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-20 justify-items-center">
     @foreach ($stats as $item)
       <div class="stat-item flex flex-col items-center text-center">
         <div class="relative w-24 h-24 md:w-28 md:h-28">
@@ -76,11 +76,11 @@
           </svg>
 
           <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-xl md:text-2xl font-extrabold counter" data-target="{{ $item['value'] }}">0</span>
+            <span class="text-xl md:text-lg font-extrabold counter" data-target="{{ $item['value'] }}">0</span>
             <span class="text-lg md:text-xl font-extrabold text-blue-800 ml-1">+</span>
           </div>
         </div>
-        <p class="mt-3 text-xs md:text-sm font-semibold text-blue-900">
+        <p class="mt-1 text-xs md:text-sm font-semibold text-blue-900">
           {{ $item['text'] }}
         </p>
       </div>
