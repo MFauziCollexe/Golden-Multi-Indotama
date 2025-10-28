@@ -1,23 +1,22 @@
-<header class="fixed top-0 left-0 w-full bg-[#0D1B2A] text-white z-50 shadow-md transition-all duration-300">
+<header id="mainHeader" class="fixed top-0 left-0 w-full bg-[#0D1B2A] text-white z-50 shadow-md transition-all duration-300">
     <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
         {{-- Logo --}}
-        <div class="flex items-center gap-3">
-            <img src="{{ asset('images/png/logo/logo-gmi-text-putih.png') }}" alt="Logo GMI" class="h-10 w-auto">
-        </div>
+        <a href="{{ route('home') }}" class="flex items-center space-x-2">
+            <img src="{{ asset('images/png/logo/logo-gmi-text-putih.png') }}" alt="GOLDEN MULTI INDOTAMA" class="h-10">
+        </a>
 
         {{-- Navigation --}}
         <nav class="hidden md:flex items-center space-x-6 text-sm font-medium relative z-30">
             @foreach ($menus as $menu)
                 <div class="relative group">
-                    <button class="flex items-center space-x-1 text-white hover:text-yellow-400 focus:outline-none">
+                    <a href="{{ url($menu->route) }}" class="flex items-center space-x-1 text-white hover:text-yellow-400">
                         <span>{{ $menu->title }}</span>
                         @if ($menu->submenus->count() > 0)
                             <svg class="w-4 h-4 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
                         @endif
-                    </button>
+                    </a>
 
                     {{-- Dropdown --}}
                     @if ($menu->submenus->count() > 0)

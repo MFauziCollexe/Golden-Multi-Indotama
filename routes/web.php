@@ -3,15 +3,21 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\InnovationController;
+use App\Http\Controllers\CareersController;
+use App\Http\Controllers\ContactController;
+
 
 // Halaman utama
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Menu utama
 Route::get('/company', [CompanyController::class, 'index'])->name('company');
-Route::get('/services', [ServiceController::class, 'index'])->name('services');
+Route::get('/services', [ServicesController::class, 'index'])->name('services');
 Route::get('/innovation', [InnovationController::class, 'index'])->name('innovation');
-Route::get('/careers', [CareerController::class, 'index'])->name('careers');
+Route::get('/careers', [CareersController::class, 'index'])->name('careers');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 
