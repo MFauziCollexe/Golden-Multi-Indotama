@@ -7,7 +7,7 @@
 @endphp
 
 @if($advantageSection)
-<section class="px-6 md:px-20 py-16 bg-white">
+<section id="advantages" class="px-6 md:px-20 py-16 bg-white">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
     {{-- Kolom kiri --}}

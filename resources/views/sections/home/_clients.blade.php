@@ -1,4 +1,4 @@
-<section class="bg-gray-100 py-16 px-6 md:px-20 text-center">
+<section id="clients" class="bg-gray-100 py-16 px-6 md:px-20 text-center">
     <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-10">
         {{ $section->title }}
     </h2>
